@@ -3,6 +3,7 @@ package com.ynov.vernet.cookieclicker;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,9 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
             // Incrémenter le score
             incrementerScore();
-
         });
-
     }
 
     public void decrementerChrono() {
@@ -46,6 +45,25 @@ public class MainActivity extends AppCompatActivity {
                             // Décrémenter le chrono
                             temps--;
                             textViewTemps.setText("Temps : " + temps + " s");
+
+                            // Si le temps atteint 0
+                            if (temps == 0) {
+                                // Arrêter le Thread
+
+                                // Faire une moyenne des clics
+                                int moyenneClicks = score / 10;
+
+                                // Afficher la moyenne
+                                AlertDialog alertDialog = new AlertDialog.Builder(getApplicationContext())
+                                        .setIcon(android.R.drawable.ic_dialog_alert)
+                                        .setTitle("Titre")
+                                        .setMessage(moyenneClicks + " clics / secondes")
+                                        .setPositiveButton("Oui", (dialogInterface, i) -> {
+                                        })
+                                        .show();
+                                alertDialog.setCanceledOnTouchOutside(false);
+
+                            }
                         });
                     }
                 } catch (InterruptedException e) {
@@ -58,6 +76,5 @@ public class MainActivity extends AppCompatActivity {
     public void incrementerScore() {
         score++;
         textViewScore.setText("Score : " + score);
-
     }
 }
