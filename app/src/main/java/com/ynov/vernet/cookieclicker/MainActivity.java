@@ -1,6 +1,5 @@
 package com.ynov.vernet.cookieclicker;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -13,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView textViewTemps, textViewScore;
     private int score = 0;
-    private int temps = 3;      /*Mettre 10*/
+    private int temps = 10;
     private CountDownTimer timer;
 
     @Override
@@ -65,8 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
             // Afficher les résultats
             resultat();
-        }
-        else
+        } else
             // Continuer le compte à rebours
             timer.start();
     }
@@ -79,14 +77,19 @@ public class MainActivity extends AppCompatActivity {
     public void resultat() {
 
         // Faire une moyenne des clics
-        double moyenneClicks = score / 10;
+        float moyenneClicks = score / 10;
 
         // Afficher la moyenne
         AlertDialog alertDialog = new AlertDialog.Builder(this)
-                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setIcon(android.R.drawable.ic_dialog_info)
                 .setTitle("Terminé !")
                 .setMessage(moyenneClicks + " clics / secondes")
                 .setPositiveButton("Ok", (dialogInterface, i) -> {
+                    // Réinitialiser les valeurs
+                    score = 0;
+                    temps = 10;
+                    textViewScore.setText("Score : " + score);
+                    textViewTemps.setText("Temps : " + temps + " s");
                 })
                 .show();
         alertDialog.setCanceledOnTouchOutside(false);
