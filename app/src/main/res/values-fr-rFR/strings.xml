@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="score_0">Score : 0</string>
+    <string name="temps_10_s">Temps : 10 s</string>
+    <string name="image_cookie">Image cookie</string>
+    <string name="erreur">Erreur</string>
+    <string name="temps">Temps : %1$d s</string>
+    <string name="score">Score : %1$d</string>
+    <string name="termine">Terminé !</string>
+    <string name="moyenne_clics">%1$f clics / secondes</string>
+    <string name="ok">Ok</string>
+</resources>

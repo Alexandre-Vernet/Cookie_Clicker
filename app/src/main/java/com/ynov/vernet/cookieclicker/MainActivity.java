@@ -12,7 +12,8 @@ public class MainActivity extends AppCompatActivity {
 
     TextView textViewTemps, textViewScore;
     private int score = 0;
-    private int temps = 10;
+    private int temps = 3;
+    private double moyenneClics;
     private CountDownTimer timer;
 
     @Override
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             decrementerChrono();
                         } catch (Exception e) {
-                            Log.e("Erreur", "Erreur : " + e.toString());
+                            Log.e(getString(R.string.erreur), R.string.erreur + e.toString());
                         }
                     }
                 }.start();
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void decrementerChrono() {
         temps--;
-        textViewTemps.setText("Temps : " + temps + " s");
+        textViewTemps.setText(getString(R.string.temps, temps));
 
         // Si le temps atteint 0
         if (temps <= 0) {
@@ -71,25 +72,25 @@ public class MainActivity extends AppCompatActivity {
 
     public void incrementerScore() {
         score++;
-        textViewScore.setText("Score : " + score);
+        textViewScore.setText(getString(R.string.score, score));
     }
 
     public void resultat() {
 
         // Faire une moyenne des clics
-        float moyenneClicks = score / 10;
+        moyenneClics = score / 10;
 
         // Afficher la moyenne
         AlertDialog alertDialog = new AlertDialog.Builder(this)
                 .setIcon(android.R.drawable.ic_dialog_info)
-                .setTitle("Terminé !")
-                .setMessage(moyenneClicks + " clics / secondes")
-                .setPositiveButton("Ok", (dialogInterface, i) -> {
+                .setTitle(R.string.termine)
+                .setMessage(getString(R.string.moyenne_clics, moyenneClics))
+                .setPositiveButton(R.string.ok, (dialogInterface, i) -> {
                     // Réinitialiser les valeurs
                     score = 0;
                     temps = 10;
-                    textViewScore.setText("Score : " + score);
-                    textViewTemps.setText("Temps : " + temps + " s");
+                    textViewScore.setText(getString(R.string.score, score));
+                    textViewTemps.setText(getString(R.string.temps, temps));
                 })
                 .show();
         alertDialog.setCanceledOnTouchOutside(false);

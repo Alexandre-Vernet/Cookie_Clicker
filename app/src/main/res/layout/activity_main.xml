@@ -11,22 +11,22 @@
         android:id="@+id/textViewScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Score : 0"
-        android:textSize="30dp" />
+        android:text="@string/score_0"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/textViewTemps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Temps : 10 s"
-        android:textSize="30dp" />
+        android:text="@string/temps_10_s"
+        android:textSize="30sp" />
 
     <ImageView
         android:id="@+id/imageViewCookie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="Picture cookie"
+        android:contentDescription="@string/image_cookie"
         android:src="@drawable/cookie" />
 
 </LinearLayout>
