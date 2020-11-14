@@ -1,5 +1,6 @@
 package com.ynov.vernet.cookieclicker;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -12,8 +13,8 @@ public class MainActivity extends AppCompatActivity {
 
     TextView textViewTemps, textViewScore;
     private int score = 0;
-    private int temps = 3;
-    private double moyenneClics;
+    private int temps = 10;
+    private float moyenneClics;
     private CountDownTimer timer;
 
     @Override
@@ -78,10 +79,10 @@ public class MainActivity extends AppCompatActivity {
     public void resultat() {
 
         // Faire une moyenne des clics
-        moyenneClics = score / 10;
+        moyenneClics = (float) score / 10;
 
         // Afficher la moyenne
-        AlertDialog alertDialog = new AlertDialog.Builder(this)
+        @SuppressLint("StringFormatMatches") AlertDialog alertDialog = new AlertDialog.Builder(this)
                 .setIcon(android.R.drawable.ic_dialog_info)
                 .setTitle(R.string.termine)
                 .setMessage(getString(R.string.moyenne_clics, moyenneClics))

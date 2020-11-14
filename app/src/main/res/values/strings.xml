@@ -7,6 +7,6 @@
     <string name="temps">Time : %1$d s</string>
     <string name="score">Score : %1$d</string>
     <string name="termine">Finished !</string>
-    <string name="moyenne_clics">%1$f clics / seconds</string>
+    <string name="moyenne_clics">%1$s clics / seconds</string>
     <string name="ok">Ok</string>
 </resources>
